@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elza-money Admin Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="orb"></span>
+        <div>
+          <p class="eyebrow">Elza-money Admin</p>
+          <h1>Control withdrawals & redeem flows</h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="admin-controls">
+        <header>
+          <p class="eyebrow">Admin control</p>
+          <h2>Clear users & manage withdrawals</h2>
+          <p>Use these controls to approve cleared accounts, handle pending withdrawal requests, and keep fraudsters blocked.</p>
+        </header>
+        <div class="admin-controls__grid">
+          <form id="clear-user-form">
+            <h3>Clear user</h3>
+            <label>
+              Admin email
+              <input type="email" name="adminEmail" placeholder="admin@elza-money.com" required />
+            </label>
+            <label>
+              User ID
+              <input type="number" name="userId" placeholder="1" required min="1" />
+            </label>
+            <button type="submit">Mark as cleared</button>
+            <p class="feedback" aria-live="polite"></p>
+          </form>
+          <form id="approve-withdrawal-form">
+            <h3>Approve withdrawal</h3>
+            <label>
+              Request ID
+              <input type="number" name="requestId" placeholder="5" required min="1" />
+            </label>
+            <label>
+              Admin email
+              <input type="email" name="adminEmail" placeholder="admin@elza-money.com" required />
+            </label>
+            <button type="submit">Approve</button>
+            <p class="feedback" aria-live="polite"></p>
+          </form>
+          <form id="reject-withdrawal-form">
+            <h3>Reject withdrawal</h3>
+            <label>
+              Request ID
+              <input type="number" name="requestId" placeholder="5" required min="1" />
+            </label>
+            <label>
+              Notes
+              <input type="text" name="notes" placeholder="Explain reason" required />
+            </label>
+            <label>
+              Admin email
+              <input type="email" name="adminEmail" placeholder="admin@elza-money.com" required />
+            </label>
+            <button type="submit">Reject</button>
+            <p class="feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-section">
+        <header>
+          <p class="eyebrow">Withdrawal methods</p>
+          <h2>Binance addresses</h2>
+          <p>
+            Maintain each payout method with labels, networks, and strict limits so
+            support can confirm transfers before sending.
+          </p>
+        </header>
+        <div class="admin-grid">
+          <article>
+            <h3>Address details</h3>
+            <p>
+              Add spot, funding, or fiat deposit addresses with a short label and
+              the blockchain network. Lock the method after every payout to record
+              the proof of transaction.
+            </p>
+            <ul>
+              <li>Address: <code>0xABCD…1234</code></li>
+              <li>Label: Maya’s Spot Wallet</li>
+              <li>Network: Ethereum (ERC20)</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Daily caps</h3>
+            <p>
+              Assign limits per address plus a cooldown window to avoid double
+              withdrawals. The console alerts you when a deposit address is nearing
+              its cap.
+            </p>
+            <ul>
+              <li>Cap: $5,000/day</li>
+              <li>Cooldown: 2 hours</li>
+              <li>Status: Ready</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Verification steps</h3>
+            <p>
+              Every addition triggers two-factor confirmation and logs the admin
+              email, IP, and timestamp so compliance can audit the change later.
+            </p>
+            <ul>
+              <li>2FA: Enabled</li>
+              <li>Logged by: admin@elza-money.com</li>
+              <li>Time: 2026-04-04 08:42 UTC</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="admin-section">
+        <header>
+          <p class="eyebrow">Redeem codes</p>
+          <h2>Google Pay transfers</h2>
+          <p>
+            Issue one-time redeem codes, monitor their status, and cancel them when
+            compliance flags a risk. Codes expire after 15 minutes.
+          </p>
+        </header>
+        <div class="admin-grid">
+          <article>
+            <h3>Code generator</h3>
+            <p>
+              Generate a new redeem code and lock in the amount before emailing the client.
+            </p>
+            <ul>
+              <li>Code: <code>ELZA-GPAY-2026</code></li>
+              <li>Amount: $50</li>
+              <li>Expires: 2026-04-04 09:15 UTC</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Status monitoring</h3>
+            <p>
+              Track which codes were redeemed, which are pending, and which were
+              canceled after a failed verification.
+            </p>
+            <ul>
+              <li>Redeemed: 32</li>
+              <li>Pending: 4</li>
+              <li>Canceled: 1</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Immediate actions</h3>
+            <p>
+              Pause all Google Pay payouts or Binance withdrawals with a single toggle
+              while you investigate suspicious cases.
+            </p>
+            <ul>
+              <li>Global pause: Off</li>
+              <li>Binance queue: Normal</li>
+              <li>Google Pay queue: Normal</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Elza-money Admin Console.</p>
+      <p>Audit logs · Support · Logout</p>
+    </footer>
+    <script src="scripts/routes.js" defer></script>
+    <script src="scripts/admin.js" defer></script>
+  </body>
+</html>
